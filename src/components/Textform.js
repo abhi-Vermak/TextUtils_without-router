@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
+
+  
   const [text, setText] = useState("");
 
   const handleUpClick = () => {
@@ -36,19 +38,31 @@ export default function TextForm(props) {
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
+let changeColor = props.mode==="light" ?'black':"white";
+  
+  let myStyle = {
+    backgroundColor: props.mode === "light" ? 'white' :  '#101e38',
+    color: changeColor,
+    border : '2px solid ${changeColor}',
+  };
+
+  let numOfWords = (text.split(" ").pop() ===""?text.split(" ").length-1 :text.split(' ').length);
+  
 
   return (
     <>
       <div className="container my-5">
         <div className="mb-3 container">
-          <h2>{props.heading}</h2>
+          <h2>Enter Text here</h2>
 
           <textarea
-            className="form-control border-2 border-dark"
+            className="form-control border-2"
+            style={myStyle}
             id="myBox"
             value={text}
             onChange={handleOnChange}
             rows="8"
+            
           ></textarea>
         </div>
 
@@ -63,6 +77,8 @@ export default function TextForm(props) {
         <button className="btn btn-primary my-1 mx-2" onClick={SentenceCase}>
           Convert to Sentence Case
         </button>
+
+
         <button className="btn btn-danger my-1 mx-2" onClick={clearText}>
           Clear Text
         </button>
@@ -70,11 +86,13 @@ export default function TextForm(props) {
         <div className="container my-4">
           <h2>Your Text Summary</h2>
           <p>
-            {" "}
-            {text.split(" ").length} words and {text.length} characters
+             
+            {numOfWords} words and {text.length} characters
+
+            {/* {text===" " || text.split(" ").pop() ==="" ? text.split(" ").length-1 :text.split(' ').length} words and {text.length} characters */}
           </p>
           <h2 className="my-2">Preview</h2>
-          <p>{text}</p>
+          <p>{(text.length>0)?text :"Enter text to Preview"}</p>
         </div>
       </div>
     </>
