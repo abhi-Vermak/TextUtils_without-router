@@ -28,16 +28,20 @@ function App() {
    }
   }
   return (
-   
-    <Router>
+    <>
       <Navbar mode={mode} toggleMode={toggleMode}/>/
-        <TextForm mode={mode}/>
-      <Routes>
+       <TextForm mode={mode}/>
+    </>
+    // <Router>
+    //   <Navbar mode={mode} toggleMode={toggleMode}/>/
+    //     <TextForm mode={mode}/>
+    //   <Routes>
+    //     <Route path="/about" element={<About/>}/>
+    //     <Route path="/about" element={<About/>}/>
+    //     <Route path="/login" element={<Login/>}/>
+    //   </Routes>  
+    // </Router>
 
-        <Route path="/about" element={<About/>}/>
-        <Route path="/login" element={<Login/>}/>
-      </Routes>  
-    </Router>
   );
 }
 
